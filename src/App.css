@@ -1,0 +1,405 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed&family=Caveat&display=swap");
+.App {
+  font-family: "Barlow Semi Condensed", sans-serif;
+}
+
+/* HEADER */
+header {
+  padding: 0 100px 0 40px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+header > div {
+  display: flex;
+}
+header .head_title {
+  width: 30%;
+  justify-content: start;
+}
+header .head_search {
+  padding-top: 50px;
+  width: 70%;
+  justify-content: end;
+}
+header .head_title h1 {
+  height: 60px;
+  font-family: "Caveat", cursive;
+  font-size: 60px;
+  cursor: pointer;
+  font-weight: bolder;
+}
+header .head_title h1 a {
+  text-decoration-line: none;
+  color: black;
+}
+
+header .head_search button {
+  border: none;
+  cursor: pointer;
+}
+header .head_search input {
+  width: 70%;
+  border: none;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+  font-size: 15px;
+  padding: 10px 10px;
+}
+header .head_search input:focus {
+  outline: none;
+}
+
+/* Home_Middle*/
+@keyframes middle-ani {
+  0% {
+    transform: translate(1000px, 0);
+  }
+  40% {
+    transform: translate(0, 0);
+  }
+  60% {
+    transform: translate(50px, 0);
+  }
+  80% {
+    transform: translate(0, 0);
+  }
+  90% {
+    transform: translate(15px, 0);
+  }
+  95% {
+    transform: translate(0, 0);
+  }
+  97% {
+    transform: translate(5px, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.Home_img {
+  animation: middle-ani 1.3s ease forwards;
+  display: flex;
+}
+.middle .Home_img img {
+  width: 50%;
+  height: 1000px;
+}
+
+/* MENU */
+@keyframes menu-ani {
+  0% {
+    transform: translate(-400px, 0);
+  }
+  40% {
+    transform: translate(0, 0);
+  }
+  60% {
+    transform: translate(-50px, 0);
+  }
+  80% {
+    transform: translate(0, 0);
+  }
+  90% {
+    transform: translate(-15px, 0);
+  }
+  95% {
+    transform: translate(0, 0);
+  }
+  97% {
+    transform: translate(-5px, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+.Menu {
+  background-color: #ececec;
+  animation: menu-ani 1.3s ease forwards;
+
+  float: left;
+  width: 400px;
+  height: 2000px;
+}
+.Menu ul li {
+  padding-top: 10px;
+  list-style-type: none;
+}
+.Menu ul li a {
+  text-decoration-line: none;
+  color: black;
+}
+.Menu .menu_main {
+  width: 240px;
+  font-size: 40px;
+  font-family: "Barlow Semi Condensed", sans-serif;
+}
+.Menu .menu_sub {
+  font-size: 30px;
+  padding-top: 15px;
+}
+
+/* FOOTER */
+footer {
+  width: 100%;
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid black;
+}
+footer div {
+  width: 20%;
+  padding: 10px;
+}
+footer .foot_3 p {
+  font-size: 14px;
+}
+footer .foot_4 select {
+  width: 70%;
+  font-family: "Barlow Semi Condensed", sans-serif;
+  cursor: pointer;
+}
+
+/* ITEM */
+.Item {
+}
+
+/* ITEMLIST */
+.ItemList {
+  height: 2000px;
+}
+
+.ItemList .item_dummy {
+  padding-right: 50px;
+}
+.ItemList .ControlMenu {
+  justify-content: end;
+}
+
+/* ItemItem */
+.ItemItem {
+  float: left;
+}
+.ItemItem .box_img {
+}
+.ItemItem .box_img img {
+  width: 400px;
+  height: 500px;
+}
+.ItemItem .box_content {
+  padding-left: 20px;
+  padding-right: 30px;
+  padding-bottom: 70px;
+}
+.ItemItem .box_content .price strong {
+  padding: 0 5px;
+  font-size: 20px;
+}
+.ItemItem .box_content .price span.sale {
+  padding: 0 5px;
+  font-size: 20px;
+  color: red;
+}
+.ItemItem .box_content .price span.regular_price {
+  padding: 0 5px;
+  color: rgb(102, 102, 102);
+  text-decoration: line-through;
+}
+
+/* ControlMenu */
+
+.ControlMenu {
+  display: flex;
+  padding-right: 10%;
+}
+.ControlMenu select {
+  font-size: 14px;
+  padding: 5px 10px;
+}
+.ControlMenu option {
+  font-size: 14px;
+}
+
+/* LoginHeader */
+header.LoginHeader {
+  padding: 10px 0;
+}
+header.LoginHeader .login_back {
+  padding-left: 30px;
+  padding-right: 25px;
+}
+header.LoginHeader .login_title {
+  width: 90%;
+  justify-content: center;
+}
+
+/* Login */
+.Login .login_content {
+  position: absolute;
+  top: 200px;
+  left: 40%;
+}
+.Login .login_content .login_title {
+  padding: 30px 0 10px 5px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #161616;
+}
+.Login .login_content .login_error {
+  padding: 4px;
+  font-size: 12px;
+  color: #ef0000;
+}
+.Login .login_content input {
+  width: 450px;
+  height: 30px;
+  font-size: 18px;
+  border: none;
+  border-bottom: 2px solid lightgray;
+}
+.Login .login_content input:focus {
+  outline: none;
+}
+/* placeholder 숨기기 */
+.Login .login_content input:focus::placeholder {
+  color: transparent;
+}
+.Login .login_content .login_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding-top: 40px;
+  padding-bottom: 20px;
+}
+.Login .login_content .login_btn button {
+  width: 450px;
+  height: 50px;
+
+  font-size: 16px;
+  color: white;
+  background-color: #161616;
+
+  border: none;
+  border-radius: 4px;
+}
+.Login .login_content .login_search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Login .login_content .login_search a {
+  color: black;
+  text-decoration: none;
+}
+.Login .login_content .login_search span {
+  padding: 0 30px;
+}
+
+/* SignUp */
+.SingUp .signup_content {
+  position: absolute;
+  top: 120px;
+  left: 35%;
+}
+.SingUp .signup_content .signup_h4 {
+  border-bottom: 2px solid #161616;
+  padding-left: 40px;
+  margin-bottom: 40px;
+}
+.SingUp .signup_content h4 {
+  font-size: 20px;
+}
+.SingUp .signup_content .signup_title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #161616;
+}
+.SingUp .signup_content .signup_box {
+  display: flex;
+
+  padding-bottom: 40px;
+  padding-left: 10px;
+}
+.SingUp .signup_content .signup_box .signup_title {
+  width: 125px;
+}
+.SingUp .signup_content .signup_box input {
+  width: 200px;
+  height: 20px;
+}
+.SingUp .signup_content .signup_box .checkbox {
+  width: 23px;
+}
+
+/* 주소 박스*/
+.SingUp .signup_content .signup_box button {
+  width: 100px;
+  height: 30px;
+  margin-left: 30px;
+
+  border: none;
+  border-radius: 4px;
+  color: black;
+  background-color: #ececec;
+  box-shadow: 3px 3px 3px gray;
+
+  font-size: 14px;
+  cursor: pointer;
+}
+.SingUp .signup_content .signup_box button:active {
+  box-shadow: none;
+}
+.SingUp .signup_content .signup_box .addr_box_sub {
+  display: flex;
+  flex-direction: column;
+}
+.SingUp .signup_content .signup_box .addr_box_sub input {
+  width: 400px;
+  margin-top: 10px;
+}
+
+.SingUp .signup_content .signup_box select {
+  width: 55px;
+}
+.SingUp .signup_content .signup_box span {
+  padding: 0 10px;
+}
+.SingUp .signup_content .signup_box label {
+  padding-left: 3px;
+  padding-right: 20px;
+}
+.SingUp .signup_content input:focus::placeholder {
+  color: transparent;
+}
+.SingUp .signup_content .signp_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.SingUp .signup_content .signp_btn button {
+  width: 100%;
+  height: 50px;
+
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  color: white;
+  background-color: #161616;
+  box-shadow: 3px 3px 3px gray;
+
+  margin-bottom: 30px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+}
+.SingUp .signup_content .signp_btn button:active {
+  box-shadow: none;
+}
+.SingUp .signup_content .signp_btn span {
+  padding-right: 10px;
+}
