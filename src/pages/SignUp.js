@@ -13,7 +13,7 @@ const SingUp = () => {
         </div>
 
         <div className="signup_box">
-          <div className="signup_title">아이디</div>
+          <div className="signup_title">아이디!!!!!!!!!</div>
           <input className="input" />
         </div>
 
