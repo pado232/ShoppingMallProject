@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from "react";
+import { useEffect, useReducer, useRef, useState } from "react";
 
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -11,44 +11,36 @@ import MyPage from "./pages/MyPage";
 import Best from "./pages/Best";
 import SingUp from "./pages/SignUp";
 
-const reducer = (state, action) => {
-  let newState = [];
-  switch (action.type) {
-    case "INIT": {
-      return action.data;
-    }
-    case "CREATE": {
-      return;
-    }
-    default:
-      return state;
-  }
-};
-
 function App() {
-  //   const [data, dispatch] = useReducer(reducer, []);
+  // const [memberData, setData] = useState([]);
 
-  //   const getDate = async () => {
-  //     const Response = await fetch(
-  //       "https://jsonplaceholder.typicode.com/photos"
-  //     ).then((Response) => Response.json());
+  // const dataId = useRef(0);
 
-  //     const initData = Response.slice(0, 10).map(() => {
-  //       return {
-  //         id: it.id,
-  //         name: it.title,
-  //         image: it.url,
-  //       };
-  //     });
-  //     // 데이터를 전달(date: initData)하고 데이터를 초기화(type: "INIT")하는 액션을 발생(dispatch)시키겠다.
-  //     // reducer은 액션객체를 받는데 그 객체의 타입은 INIT이고 그 액션에 필요한 데이터는 initData가 된다.
-  //     dispatch({ type: "INIT", date: initData });
+  // const onSubmit = (
+  //   memberNum,
+  //   id,
+  //   pw,
+  //   email,
+  //   name,
+  //   address,
+  //   phone,
+  //   sex,
+  //   birthDate
+  // ) => {
+  //   const newMember = {
+  //     memberNum: dataId.current,
+  //     id,
+  //     pw,
+  //     email,
+  //     name,
+  //     address,
+  //     phone,
+  //     sex,
+  //     birthDate,
   //   };
-
-  // useEffect(() => {
-  //   getDate();
-  // }, []);
-
+  //   dataId.current += 1;
+  //   setData([newMember, ...memberData]);
+  // };
   return (
     <BrowserRouter>
       <div className="App">

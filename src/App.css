@@ -280,9 +280,13 @@ header.LoginHeader .login_title {
   font-size: 16px;
   color: white;
   background-color: #161616;
+  box-shadow: 3px 3px 3px gray;
 
   border: none;
   border-radius: 4px;
+}
+.Login .login_content .login_btn button:active {
+  box-shadow: none;
 }
 .Login .login_content .login_search {
   display: flex;
@@ -343,7 +347,7 @@ header.LoginHeader .login_title {
   border-radius: 4px;
   color: black;
   background-color: #ececec;
-  box-shadow: 3px 3px 3px gray;
+  box-shadow: 3px 3px 3px rgb(207, 207, 207);
 
   font-size: 14px;
   cursor: pointer;
