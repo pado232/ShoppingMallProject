@@ -339,8 +339,7 @@ header.LoginHeader .login_title {
 
 /* 주소 박스*/
 .SingUp .signup_content .signup_box button {
-  width: 100px;
-  height: 30px;
+  padding: 6px;
   margin-left: 30px;
 
   border: none;
@@ -363,7 +362,10 @@ header.LoginHeader .login_title {
   width: 400px;
   margin-top: 10px;
 }
-
+.SingUp .signup_content .signup_box .addr_box_sub2 input {
+  width: 400px;
+  margin-top: 10px;
+}
 .SingUp .signup_content .signup_box select {
   width: 55px;
 }

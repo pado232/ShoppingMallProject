@@ -1,13 +1,27 @@
 import LoginHeader from "../components/LoginHeader";
 import { FaCheck } from "react-icons/fa6";
-import { useState } from "react";
+import { useRef, useState, forwardRef, useImperativeHandle } from "react";
+import PopAddress from "../components/PopAddress";
+
+const sortOptionList = [
+  { value: "010" },
+  { value: "011" },
+  { value: "016" },
+  { value: "017" },
+  { value: "018" },
+  { value: "019" },
+];
 
 const SingUp = () => {
+  const inputRef = useRef([]);
+
   const [state, setState] = useState({
     id: "",
     pw: "",
+    pwCheck: "",
     email: "",
     name: "",
+    addrNum: "",
     addr1: "",
     addr2: "",
     phone1: "010",
@@ -23,9 +37,23 @@ const SingUp = () => {
     });
   };
 
+  const handleAddressChange = (numAddress, fullAddress) => {
+    setState({
+      ...state,
+      addrNum: numAddress,
+      addr1: fullAddress,
+    });
+  };
+
   const handleSubmit = () => {
+    for (let i = 0; i < inputRef.current.length; i++) {
+      if (inputRef.current[i].value === "") {
+        alert(inputRef.current[i].name + "는(은) 필수 입력사항입니다.");
+        inputRef.current[i].focus();
+        return;
+      }
+    }
     console.log(state);
-    alert("저장 성공");
   };
 
   // const handleSignUpSubmit = () => {
@@ -42,6 +70,12 @@ const SingUp = () => {
   //   alert("전송 성공");
   // };
 
+  // const onCompletePost = (data) => {
+  //   setModalState(false);
+  //   setInputAddressValue(data.address);
+  //   setInputZipCodeValue(data.zonecode);
+  // };
+
   const checkIconSize = 8 * 3;
 
   return (
@@ -51,7 +85,6 @@ const SingUp = () => {
         <div className="signup_h4">
           <h4>회원정보 입력</h4>
         </div>
-
         <div className="signup_box">
           <div className="signup_title">아이디</div>
           <input
@@ -59,22 +92,31 @@ const SingUp = () => {
             name="id"
             value={state.id}
             onChange={handleChangeState}
+            ref={(el) => (inputRef.current[0] = el)}
           />
         </div>
 
         <div className="signup_box">
           <div className="signup_title">비밀번호</div>
-          <input type="password" className="input" />
+          <input
+            className="input"
+            name="pw"
+            value={state.pw}
+            type="password"
+            onChange={handleChangeState}
+            ref={(el) => (inputRef.current[1] = el)}
+          />
         </div>
 
         <div className="signup_box">
           <div className="signup_title">비밀번호 확인</div>
           <input
-            type="password"
             className="input"
-            name="pw"
-            value={state.pw}
+            name="pwCheck"
+            value={state.pwCheck}
+            type="password"
             onChange={handleChangeState}
+            ref={(el) => (inputRef.current[2] = el)}
           />
         </div>
 
@@ -86,6 +128,7 @@ const SingUp = () => {
             name="email"
             value={state.email}
             onChange={handleChangeState}
+            ref={(el) => (inputRef.current[3] = el)}
           />
         </div>
 
@@ -96,26 +139,23 @@ const SingUp = () => {
             name="name"
             value={state.name}
             onChange={handleChangeState}
+            ref={(el) => (inputRef.current[4] = el)}
           />
         </div>
 
         <div className="signup_box">
           <div className="signup_title">주소</div>
           <div className="addr_box">
-            <input className="input_addr_num" />
-            <button>주소 검색</button>
-            <div className="addr_box_sub">
-              <input
-                className="input_addr_main"
-                name="addr1"
-                value={state.addr1}
-                onChange={handleChangeState}
-              />
+            <PopAddress
+              onAddressChange={handleAddressChange}
+              handleSubmit={handleSubmit}
+            />
+            <div className="addr_box_sub2">
               <input
                 className="input_addr_detail"
                 name="addr2"
-                value={state.addr2}
                 onChange={handleChangeState}
+                value={state.addr2}
               />
             </div>
           </div>
@@ -128,12 +168,9 @@ const SingUp = () => {
             value={state.phone1}
             onChange={handleChangeState}
           >
-            <option value={"010"}>010</option>
-            <option value={"011"}>011</option>
-            <option value={"016"}>016</option>
-            <option value={"017"}>017</option>
-            <option value={"018"}>018</option>
-            <option value={"019"}>019</option>
+            {sortOptionList.map((it) => (
+              <option key={it.value}>{it.value}</option>
+            ))}
           </select>
           <span>-</span>
           <input
@@ -144,6 +181,7 @@ const SingUp = () => {
             name="phone2"
             value={state.phone2}
             onChange={handleChangeState}
+            ref={(el) => (inputRef.current[5] = el)}
           />
           <span>-</span>
           <input
@@ -154,14 +192,15 @@ const SingUp = () => {
             name="phone3"
             value={state.phone3}
             onChange={handleChangeState}
+            ref={(el) => (inputRef.current[6] = el)}
           />
         </div>
 
         {/* <div className="signup_box">
           <div className="signup_title">성별</div>
-          <input className="checkbox" type="checkbox" value={sex} />
+          <input className="checkbox" type="checkbox" value={state.sex} />
           <label>남자</label>
-          <input className="checkbox" type="checkbox" value={sex} />
+          <input className="checkbox" type="checkbox" value={state.sex} />
           <label>여자</label>
         </div> */}
 
@@ -173,6 +212,7 @@ const SingUp = () => {
             name="birth"
             value={state.birth}
             onChange={handleChangeState}
+            ref={(el) => (inputRef.current[7] = el)}
           />
         </div>
 

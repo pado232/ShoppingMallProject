@@ -10,6 +10,9 @@ import New from "./pages/New";
 import MyPage from "./pages/MyPage";
 import Best from "./pages/Best";
 import SingUp from "./pages/SignUp";
+import Modal from "react-modal";
+
+Modal.setAppElement("#root");
 
 function App() {
   // const [memberData, setData] = useState([]);
