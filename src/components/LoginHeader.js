@@ -4,23 +4,23 @@ import { VscChevronLeft } from "react-icons/vsc";
 
 const LoginHeader = ({ titleText }) => {
   const navigate = useNavigate();
-  const backIconSize = 12 * 3;
-  const homeIconSize = 10 * 3;
+  const backIconSize = 15 * 3;
+  const homeIconSize = 12 * 3;
 
   return (
     <header className="LoginHeader">
       <div className="login_back">
-        <a onClick={() => navigate(-1)}>
+        <button onClick={() => navigate(-1)}>
           <VscChevronLeft size={backIconSize} />
-        </a>
+        </button>
+      </div>
+      <div className="login_title">
+        <h2>{titleText}</h2>
       </div>
       <div className="login_home">
         <a href={"/"}>
           <IoHomeOutline size={homeIconSize} style={{ color: "black" }} />
         </a>
-      </div>
-      <div className="login_title">
-        <h2>{titleText}</h2>
       </div>
     </header>
   );
