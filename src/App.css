@@ -1,56 +1,82 @@
-@import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed&family=Caveat&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap");
 .App {
-  font-family: "Barlow Semi Condensed", sans-serif;
+  font-family: "Gowun Dodum", sans-serif;
 }
 
+button {
+  font-family: "Gowun Dodum", sans-serif;
+}
+input {
+  font-family: "Gowun Dodum", sans-serif;
+}
+select {
+  font-family: "Gowun Dodum", sans-serif;
+}
+div {
+  font-family: "Gowun Dodum", sans-serif;
+}
 /* HEADER */
-header {
+.MyHeader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  z-index: 10;
+
   padding: 0 100px 0 40px;
   display: flex;
   align-items: center;
   border-bottom: 1px solid black;
+  background-color: white;
+
+  font-family: "Gowun Dodum", sans-serif;
 }
-header > div {
+.MyHeader > div {
   display: flex;
 }
-header .head_title {
-  width: 30%;
+.head_title {
+  width: 20%;
   justify-content: start;
 }
-header .head_search {
-  padding-top: 50px;
-  width: 70%;
+.head_search {
+  width: 80%;
   justify-content: end;
 }
-header .head_title h1 {
-  height: 60px;
-  font-family: "Caveat", cursive;
-  font-size: 60px;
-  cursor: pointer;
-  font-weight: bolder;
-}
-header .head_title h1 a {
-  text-decoration-line: none;
-  color: black;
-}
+.head_search_box {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 2px;
+  width: 60%;
+  border-radius: 20px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 
-header .head_search button {
-  border: none;
-  cursor: pointer;
+  border: 1px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-header .head_search input {
-  width: 70%;
+.head_search_box input {
+  margin-left: 10px;
   border: none;
-  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
-  font-size: 15px;
-  padding: 10px 10px;
+  font-size: 18px;
+  width: 100%;
+  font-family: "Gowun Dodum", sans-serif;
 }
-header .head_search input:focus {
+.head_search_box input:focus {
   outline: none;
+}
+.head_search_box input:focus::placeholder {
+  color: transparent;
+}
+.head_search_box button {
+  border: none;
+  background-color: white;
+  cursor: pointer;
 }
 
 /* Home_Middle*/
-@keyframes middle-ani {
+/* @keyframes middle-ani {
   0% {
     transform: translate(1000px, 0);
   }
@@ -75,19 +101,20 @@ header .head_search input:focus {
   100% {
     transform: translate(0, 0);
   }
-}
+} */
 
+/* Home */
 .Home_img {
-  animation: middle-ani 1.3s ease forwards;
+  transform: translate(400px, 124px);
+
   display: flex;
 }
 .middle .Home_img img {
-  width: 50%;
   height: 1000px;
 }
 
 /* MENU */
-@keyframes menu-ani {
+/* @keyframes menu-ani {
   0% {
     transform: translate(-400px, 0);
   }
@@ -112,14 +139,22 @@ header .head_search input:focus {
   100% {
     transform: translate(0, 0);
   }
-}
+} */
 .Menu {
-  background-color: #ececec;
-  animation: menu-ani 1.3s ease forwards;
+  position: fixed;
+  top: 124px;
+  left: 0;
+  right: 400px;
+
+  z-index: 9;
+
+  /* animation: menu-ani 1.3s ease forwards; */
 
   float: left;
   width: 400px;
   height: 2000px;
+
+  background-color: white;
 }
 .Menu ul li {
   padding-top: 10px;
@@ -129,10 +164,12 @@ header .head_search input:focus {
   text-decoration-line: none;
   color: black;
 }
+.Menu span {
+  padding-left: 5px;
+}
 .Menu .menu_main {
-  width: 240px;
+  width: 250px;
   font-size: 40px;
-  font-family: "Barlow Semi Condensed", sans-serif;
 }
 .Menu .menu_sub {
   font-size: 30px;
@@ -141,6 +178,10 @@ header .head_search input:focus {
 
 /* FOOTER */
 footer {
+  position: absolute;
+  top: 2500px;
+  left: 400px;
+
   width: 100%;
   padding: 20px 0;
   display: flex;
@@ -157,7 +198,6 @@ footer .foot_3 p {
 }
 footer .foot_4 select {
   width: 70%;
-  font-family: "Barlow Semi Condensed", sans-serif;
   cursor: pointer;
 }
 
@@ -167,6 +207,10 @@ footer .foot_4 select {
 
 /* ITEMLIST */
 .ItemList {
+  position: absolute;
+  top: 140px;
+  left: 400px;
+
   height: 2000px;
 }
 
@@ -180,28 +224,32 @@ footer .foot_4 select {
 /* ItemItem */
 .ItemItem {
   float: left;
+  margin-right: 30px;
+  margin-bottom: 40px;
+  margin-left: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  cursor: pointer;
 }
-.ItemItem .box_img {
-}
-.ItemItem .box_img img {
-  width: 400px;
-  height: 500px;
+.ItemItem img {
+  width: 300px;
+  height: 350px;
 }
 .ItemItem .box_content {
   padding-left: 20px;
   padding-right: 30px;
   padding-bottom: 70px;
 }
-.ItemItem .box_content .price strong {
+.ItemItem .price strong {
   padding: 0 5px;
   font-size: 20px;
 }
-.ItemItem .box_content .price span.sale {
+.ItemItem .price span.sale {
   padding: 0 5px;
   font-size: 20px;
   color: red;
 }
-.ItemItem .box_content .price span.regular_price {
+.ItemItem .price span.regular_price {
   padding: 0 5px;
   color: rgb(102, 102, 102);
   text-decoration: line-through;
@@ -211,7 +259,10 @@ footer .foot_4 select {
 
 .ControlMenu {
   display: flex;
-  padding-right: 10%;
+  justify-content: end;
+  margin-right: 200px;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 .ControlMenu select {
   font-size: 14px;
@@ -226,6 +277,8 @@ footer .foot_4 select {
   padding: 20px 50px;
   display: flex;
   align-items: center;
+
+  border-bottom: 1px solid black;
 }
 
 .LoginHeader > div {
@@ -315,6 +368,20 @@ footer .foot_4 select {
   font-weight: bold;
 }
 
+/* FindPw */
+.login_content .findid_text {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login_content .findid_text a {
+  margin-left: 10px;
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+}
+
 /* SignUp */
 .SignUp {
 }
@@ -390,4 +457,241 @@ footer .foot_4 select {
 }
 .signup_content label {
   padding-right: 30px;
+}
+/* MyPage */
+.mypage_content {
+  position: absolute;
+  top: 150px;
+  left: 400px;
+}
+.mypage_menu ul {
+  display: flex;
+  margin-bottom: 0;
+  padding: 0;
+}
+.mypage_menu li {
+  width: 210px;
+  height: 40px;
+
+  list-style-type: none;
+  border: 1px solid #ccc;
+  border-radius: 12px 12px 0 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #eee;
+  cursor: pointer;
+}
+.mypage_menu li.click {
+  background-color: white;
+  font-weight: bold;
+}
+.mypage_menu a {
+  color: black;
+  text-decoration: none;
+}
+
+/* UserGrade */
+.UserGrade {
+}
+.usergrade_content {
+  border: 1px solid #ddd;
+  height: 200px;
+
+  background-color: black;
+  color: white;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.usergrade_title {
+  width: 35%;
+  padding: 30px;
+
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+.usergrade_title img {
+  width: 80px;
+}
+.title_content {
+  margin-left: 25px;
+}
+.title_content a {
+  padding-left: 10px;
+  color: gray;
+  font-size: 13px;
+  text-decoration: none;
+}
+.title_content strong {
+  padding-right: 5px;
+  font-size: 22px;
+}
+.usergrade_sub {
+  width: 65%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.usergrade_sub a {
+  width: 100%;
+  height: 100%;
+
+  border-left: 1px solid #ccc;
+  color: white;
+  text-decoration: none;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.usergrade_sub .icon {
+  padding-top: 30px;
+  text-align: center;
+}
+.usergrade_sub .contnet {
+  text-align: center;
+  font-size: 18px;
+}
+.usergrade_sub .numbers {
+  font-weight: bold;
+  padding-bottom: 30px;
+  text-align: center;
+  font-size: 25px;
+}
+
+/* Order History */
+.OrderHistory {
+  margin: 50px auto;
+}
+.OrderHistory h2 {
+  margin-left: 40px;
+}
+.lookup_box {
+  width: 100%;
+  border: 1px solid #161616;
+  border-radius: 10px;
+}
+.lookup_box .box {
+  width: 100%;
+  height: 80px;
+
+  border-bottom: 1px solid #161616;
+
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+.lookup_box .box .box_title {
+  font-weight: bold;
+  padding: 120px;
+  text-align: center;
+}
+.lookup_box label {
+  padding-right: 40px;
+}
+.lookup_box label input {
+  margin-right: 10px;
+}
+.lookup_box .search {
+  margin-left: 30px;
+  padding: 5px 20px;
+
+  color: white;
+  background-color: rgb(134, 192, 231);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  border: none;
+  border-radius: 8px;
+
+  font-size: 17px;
+  cursor: pointer;
+}
+.lookup_box button:active {
+  box-shadow: none;
+}
+
+.orderhistory_list {
+  margin: 50px auto;
+}
+.orderhistory_list table {
+}
+.orderhistory_list table thead {
+  height: 40px;
+  background-color: #e6e6e6;
+}
+.orderhistory_list table tbody {
+}
+.orderhistory_list table tbody th {
+  height: 100px;
+  border: 1px solid rgb(224, 224, 224);
+}
+
+/* Delivery */
+.Delivery {
+}
+.Delivery .signup_content {
+  margin: 50px;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+}
+.del_h2 {
+  margin: 0;
+}
+.Delivery_icon ul {
+  padding: 0;
+  margin-top: 30px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Delivery_icon li {
+  width: 100px;
+  height: 80px;
+  padding-top: 5px;
+  margin: 0 30px;
+
+  list-style-type: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+.Delivery_icon .click {
+  background-color: #161616;
+  color: white;
+}
+.Delivery_icon li.click svg {
+  stroke: white;
+}
+
+/* .Delivery_icon li:active {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+} */
+.Delivery_icon .icon {
+  margin-left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Delivery_icon p {
+  text-align: center;
+}
+
+.DeliveryFrom .signup_content {
+  margin: 0;
+  padding: 0 0 0 40px;
+  border: none;
+  box-shadow: none;
 }

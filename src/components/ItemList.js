@@ -7,7 +7,7 @@ const sortOptionList = [
   { value: "high-price", name: "높은 가격순" },
 ];
 const ItemList = ({ itemList }) => {
-  const ControlMenu = ({ value, onChange, optionList }) => {
+  const ControlMenu = () => {
     return (
       <div className="ControlMenu">
         <select>
@@ -22,6 +22,7 @@ const ItemList = ({ itemList }) => {
   return (
     <div className="ItemList">
       <ControlMenu />
+
       <div className="item_dummy">
         {itemList.map((it) => (
           <ItemItem key={it.item_id} {...it} />

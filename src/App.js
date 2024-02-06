@@ -9,39 +9,12 @@ import MyPage from "./pages/MyPage";
 import Best from "./pages/Best";
 import SingUp from "./pages/SignUp";
 import Modal from "react-modal";
+import FindId from "./pages/FindId";
+import FindPw from "./pages/FindPw";
 
 Modal.setAppElement("#root");
 
 function App() {
-  // const [memberData, setData] = useState([]);
-
-  // const dataId = useRef(0);
-
-  // const onSubmit = (
-  //   memberNum,
-  //   id,
-  //   pw,
-  //   email,
-  //   name,
-  //   address,
-  //   phone,
-  //   sex,
-  //   birthDate
-  // ) => {
-  //   const newMember = {
-  //     memberNum: dataId.current,
-  //     id,
-  //     pw,
-  //     email,
-  //     name,
-  //     address,
-  //     phone,
-  //     sex,
-  //     birthDate,
-  //   };
-  //   dataId.current += 1;
-  //   setData([newMember, ...memberData]);
-  // };
   return (
     <BrowserRouter>
       <div className="App">
@@ -53,6 +26,8 @@ function App() {
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SingUp />} />
+          <Route path="/findId" element={<FindId />} />
+          <Route path="/findpw" element={<FindPw />} />
         </Routes>
       </div>
     </BrowserRouter>

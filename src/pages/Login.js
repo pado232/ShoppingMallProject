@@ -1,7 +1,10 @@
 import LoginHeader from "../components/LoginHeader";
 import { useState } from "react";
-import { FaRegUser } from "react-icons/fa";
+
 import { HiOutlineLockClosed } from "react-icons/hi";
+import { FaRegUser } from "react-icons/fa";
+import IdBox from "../components/IdBox";
+import MyButton from "../components/MyButton";
 
 const Login = () => {
   const [pw, setPw] = useState("");
@@ -18,16 +21,18 @@ const Login = () => {
     }
   };
 
-  const idIconSize = 9 * 2;
+  const iconSize = 9 * 2;
   const pwIconSize = 7 * 3;
   return (
     <div className="Login">
       <LoginHeader titleText={"로그인"} />
       <div className="login_content">
-        <div className="login_box">
-          <FaRegUser size={idIconSize} />
-          <input type="text" placeholder="아이디" />
-        </div>
+        <IdBox
+          icon={FaRegUser}
+          iconSize={iconSize}
+          inputType={"text"}
+          inputPlaceholder={"아이디"}
+        />
 
         <div className="login_box">
           <HiOutlineLockClosed size={pwIconSize} />
@@ -40,23 +45,20 @@ const Login = () => {
             onChange={handlePw}
           />
         </div>
-
         {!pwValid && pw.length > 0 && (
-          <div className="login_error">
+          <div className="pw_error" style={{ padding: 5 }}>
             영문, 숫자, 특수문자 포함 8자 이상 입력해주세요.
           </div>
         )}
 
-        <div className="login_btn">
-          <button>로그인</button>
-        </div>
+        <MyButton buttonText={"로그인"} />
 
         <div className="login_search">
-          <a className="login_search_id" href="#">
+          <a className="login_search_id" href={"/findid"}>
             아이디 찾기
           </a>
           <span>|</span>
-          <a className="login_search_pw" href="#">
+          <a className="login_search_pw" href={"/findpw"}>
             비밀번호 찾기
           </a>
           <span>|</span>

@@ -1,14 +1,12 @@
 import LoginHeader from "../components/LoginHeader";
 import { FaCheck } from "react-icons/fa6";
 import { useRef, useState } from "react";
-import Modal from "react-modal";
-import { FiX } from "react-icons/fi";
-import DaumPostcode from "react-daum-postcode";
-import { YEAR } from "../components/SignUpInput/Year";
-import { MONTH } from "../components/SignUpInput/Month";
-import { DAY } from "../components/SignUpInput/Day";
+import MyButton from "../components/MyButton";
+import PhoneInput from "../util/PhoneInput";
+import AddressInput from "../util/AddressInput";
+import BirthDateInput from "../util/BirthDateInput";
 
-const sortOptionList = [
+export const sortOptionList = [
   { value: "010" },
   { value: "011" },
   { value: "016" },
@@ -19,16 +17,14 @@ const sortOptionList = [
 
 const SingUp = () => {
   const inputRef = useRef([]);
-
-  const [modalIsOpen, setModalIsOpen] = useState(false);
   const [pwValid, setPwVaild] = useState(false);
   const [state, setState] = useState({
     id: "",
     pw: "",
-    pwCheck: "",
+    pwcheck: "",
     email: "",
     name: "",
-    addrNum: "",
+    addrnum: "",
     addr1: "",
     addr2: "",
     phone1: "010",
@@ -40,49 +36,19 @@ const SingUp = () => {
     day: "",
   });
 
-  const customStyles = {
-    content: {
-      top: "50%",
-      left: "50%",
-      right: "auto",
-      bottom: "auto",
-      marginRight: "-50%",
-      transform: "translate(-50%, -50%)",
-    },
+  const handleAddressChange = ({ numAddress, fullAddress }) => {
+    // 상위 컴포넌트의 상태 업데이트
+    setState({
+      ...state,
+      addrnum: numAddress,
+      addr1: fullAddress,
+    });
   };
-
-  const postCodeStyle = {
-    paddingLeft: "30px",
-    paddingRigth: "20px",
-    paddingBottom: "10px",
-    paddingTop: "20px",
-    width: "400px",
-    height: "500px",
-  };
-  const divStyle = {
-    display: "flex",
-  };
-
-  const iconSize = 9 * 3;
-  const checkIconSize = 8 * 3;
-
-  // const combineState = () => {
-  //   const { phone1, phone2, phone3, year, month, day, ...rest } = state;
-
-  //   const phone = `${phone1}${phone2}${phone3}`;
-  //   const birth = `${year}-${month}-${day}`;
-
-  //   return {
-  //     ...rest,
-  //     phone,
-  //     birth,
-  //   };
-  // };
 
   const handleChangeState = (e) => {
     const { name, value, type } = e.target;
-    // 비밀번호 유효성 검사
 
+    // 비밀번호 유효성 검사
     const pwReg = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,20}$/;
     if (name === "pw" && pwReg.test(value)) {
       setPwVaild(true);
@@ -108,29 +74,6 @@ const SingUp = () => {
         [name]: value,
       });
     }
-  };
-
-  const handleComplete = (data) => {
-    setModalIsOpen(false);
-    let numAddress = data.zonecode;
-    let fullAddress = data.address;
-    let extraAddress = "";
-
-    if (data.addressType === "R") {
-      if (data.bname !== "") {
-        extraAddress += data.bname;
-      }
-      if (data.buildingName !== "") {
-        extraAddress +=
-          extraAddress !== "" ? `, ${data.buildingName}` : data.buildingName;
-      }
-      fullAddress += extraAddress !== "" ? ` (${extraAddress})` : "";
-    }
-    setState({
-      ...state,
-      addrNum: numAddress,
-      addr1: fullAddress,
-    });
   };
 
   const handleSubmit = () => {
@@ -226,15 +169,15 @@ const SingUp = () => {
         <div className="signup_title">비밀번호 확인</div>
         <input
           className="input"
-          name="pwCheck"
-          value={state.pwCheck}
+          name="pwcheck"
+          value={state.pwcheck}
           type="password"
           maxLength="20"
           onChange={handleChangeState}
           ref={(el) => (inputRef.current[2] = el)}
           autoComplete="new-password"
         />
-        {state.pwCheck.length > 0 && state.pw !== state.pwCheck && (
+        {state.pwcheck.length > 0 && state.pw !== state.pwcheck && (
           <div className="pw_error">비밀번호가 일치하지 않습니다.</div>
         )}
 
@@ -259,80 +202,17 @@ const SingUp = () => {
           autoComplete="username"
         />
 
-        <div className="signup_title">주소</div>
-        <div>
-          <button onClick={() => setModalIsOpen(true)}>우편번호 찾기</button>
-        </div>
-        <Modal
-          isOpen={modalIsOpen}
-          onRequestClose={() => setModalIsOpen(false)}
-          style={customStyles}
-        >
-          <div style={divStyle}>
-            <DaumPostcode onComplete={handleComplete} style={postCodeStyle} />
-            <FiX
-              onClick={() => setModalIsOpen(false)}
-              size={iconSize}
-              style={{ cursor: "pointer" }}
-            />
-          </div>
-        </Modal>
-        <input
-          className="input"
-          value={state.addrNum}
-          readOnly
-          name="addrNum"
-          placeholder="우편번호 : 우편번호 찾기를 눌러주세요."
-          onChange={handleChangeState}
-          ref={(el) => (inputRef.current[5] = el)}
-          autoComplete="username"
-        />
-        <input
-          className="input"
-          name="addr1"
-          value={state.addr1}
-          readOnly
-          placeholder="주소 : 우편번호 찾기를 눌러주세요."
-          onChange={handleChangeState}
-          ref={(el) => (inputRef.current[6] = el)}
-          autoComplete="username"
-        />
-        <input
-          className="input"
-          name="addr2"
-          placeholder="상세주소"
-          value={state.addr2}
-          onChange={handleChangeState}
-          autoComplete="username"
+        <AddressInput
+          state={state}
+          inputRef={inputRef}
+          handleChangeState={handleChangeState}
+          onAddressChange={handleAddressChange}
         />
 
-        <div className="signup_title">휴대전화</div>
-        <select name="phone1" value={state.phone1} onChange={handleChangeState}>
-          {sortOptionList.map((it) => (
-            <option key={it.value}>{it.value}</option>
-          ))}
-        </select>
-        <span>-</span>
-        <input
-          className="input"
-          placeholder="0000"
-          style={{ width: 50 }}
-          maxLength="4"
-          name="phone2"
-          value={state.phone2}
-          onChange={handleChangeState}
-          ref={(el) => (inputRef.current[7] = el)}
-        />
-        <span>-</span>
-        <input
-          className="input"
-          placeholder="0000"
-          style={{ width: 50 }}
-          maxLength="4"
-          name="phone3"
-          value={state.phone3}
-          onChange={handleChangeState}
-          ref={(el) => (inputRef.current[8] = el)}
+        <PhoneInput
+          state={state}
+          handleChangeState={handleChangeState}
+          inputRef={inputRef}
         />
 
         <div className="signup_title">성별</div>
@@ -361,41 +241,7 @@ const SingUp = () => {
           <span>여자</span>
         </label>
 
-        <div className="signup_title">생년월일</div>
-        <select name="year" value={state.year} onChange={handleChangeState}>
-          <option value="">출생년도</option>
-          {YEAR.map((y) => (
-            <option key={y} value={y}>
-              {y}
-            </option>
-          ))}
-        </select>
-        <select
-          name="month"
-          value={state.month}
-          style={{ marginLeft: 30 }}
-          onChange={handleChangeState}
-        >
-          <option value="">월</option>
-          {MONTH.map((m) => (
-            <option key={m} value={m}>
-              {m}
-            </option>
-          ))}
-        </select>
-        <select
-          name="day"
-          value={state.day}
-          style={{ marginLeft: 30 }}
-          onChange={handleChangeState}
-        >
-          <option value="">일</option>
-          {DAY.map((d) => (
-            <option key={d} value={d}>
-              {d}
-            </option>
-          ))}
-        </select>
+        <BirthDateInput state={state} handleChangeState={handleChangeState} />
 
         <div className="signup_title">
           <label>
@@ -404,10 +250,11 @@ const SingUp = () => {
           </label>
         </div>
 
-        <button className="final_btn" onClick={handleSubmit}>
-          <span>회원 가입하기</span>
-          <FaCheck className="icon" size={checkIconSize} />
-        </button>
+        <MyButton
+          buttonText={"회원 가입하기"}
+          handleSubmit={handleSubmit}
+          icon={FaCheck}
+        />
       </div>
     </div>
   );

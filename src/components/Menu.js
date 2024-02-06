@@ -1,4 +1,7 @@
+import { FaInstagram } from "react-icons/fa6";
+
 const Menu = () => {
+  const iconSize = 10 * 3;
   return (
     <div className="Menu">
       <ul>
@@ -13,7 +16,10 @@ const Menu = () => {
             <a href={"/item"}>Sale</a>
           </li>
           <li>
-            <a href={"https://www.instagram.com/"}>@Real Moment</a>
+            <a href={"https://www.instagram.com/"}>
+              <FaInstagram size={iconSize} />
+              <span>RealMoment</span>
+            </a>
           </li>
         </div>
         <div className="menu_sub">

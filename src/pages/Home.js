@@ -1,6 +1,7 @@
 import Menu from "../components/Menu";
 import MyFooter from "../components/MyFooter";
 import MyHeader from "../components/MyHeader";
+import HomeBestItem from "../components/SignUpInput/HomeBestItem";
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
           <img src={process.env.PUBLIC_URL + `/image/main_face.jpg`} />
           <img src={process.env.PUBLIC_URL + `/image/powder.jpg`} />
         </div>
+        <HomeBestItem />
       </div>
       <MyFooter />
     </div>

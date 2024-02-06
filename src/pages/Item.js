@@ -3,7 +3,7 @@ import Menu from "../components/Menu";
 import MyFooter from "../components/MyFooter";
 import ItemList from "../components/ItemList";
 
-const dummyList = [
+export const dummyList = [
   {
     item_id: 1,
     item_img: process.env.PUBLIC_URL + `/image/lip.jpg`,
