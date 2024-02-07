@@ -1,6 +1,24 @@
+import { FaRegHeart } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
+import { useState } from "react";
+import { TiShoppingCart } from "react-icons/ti";
+import { MdPayment } from "react-icons/md";
 const ItemItem = ({ item_id, item_img, item_name, item_price, item_sale }) => {
   const Round = (item_price * (100 - item_sale)) / 100;
 
+  const [heart, setHeart] = useState(false);
+  const iconSize = 10 * 2;
+  const iconCartSize = 12 * 2;
+  // const emptyHeart = <FaRegHeart />;
+  // const fullHeart = <FaHeart />;
+  const haertIcon = heart ? (
+    <FaHeart size={iconSize} />
+  ) : (
+    <FaRegHeart size={iconSize} />
+  );
+  const changeHeart = () => {
+    setHeart(!heart);
+  };
   return (
     <div className="ItemItem">
       <a href={"/"}>
@@ -8,16 +26,27 @@ const ItemItem = ({ item_id, item_img, item_name, item_price, item_sale }) => {
           <img src={item_img} />
         </div>
         <div className="box_content">
-          <div className="name">
-            <h4>{item_name}</h4>
-          </div>
+          <div className="name">{item_name}</div>
           <div className="price">
-            <strong>{Math.round(Round)}</strong>
+            <span className="sale_price">{Math.round(Round)}원</span>
             <span className="sale">{item_sale}%</span>
-            <span className="regular_price">{item_price}</span>
+            <span className="regular_price">{item_price}원</span>
           </div>
         </div>
       </a>
+      <div className="payment">
+        <div onClick={changeHeart}>{haertIcon}</div>
+        <div>
+          <a href="/">
+            <TiShoppingCart size={iconCartSize} />
+          </a>
+        </div>
+        <div>
+          <a href="/">
+            <MdPayment size={iconCartSize} />
+          </a>
+        </div>
+      </div>
     </div>
   );
 };

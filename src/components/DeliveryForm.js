@@ -31,6 +31,7 @@ const DeliveryFrom = ({
   const [state, setState] = useState({
     id: editingId,
     icon: "",
+    selectedIcon: <HiOutlineHome />,
     recipient: "",
     addrnum: "",
     addr1: "",
@@ -40,10 +41,10 @@ const DeliveryFrom = ({
     phone3: "",
   });
 
-  useEffect(() => {
-    console.log("editingId:", editingId);
-    console.log("state:", state);
-  }, [editingId, state]);
+  // useEffect(() => {
+  //   console.log("editingId:", editingId);
+  //   console.log("state:", state);
+  // }, [editingId, state]);
 
   useEffect(() => {
     setState((prevState) => ({
@@ -75,9 +76,12 @@ const DeliveryFrom = ({
       name === "icon" &&
       (value === "우리집" || value === "회사" || value === "기타")
     ) {
+      const selectedIcon = iconData.find((item) => item.value === value);
+
       setState({
         ...state,
         icon: value,
+        selectedIcon: selectedIcon ? selectedIcon.icon : null,
       });
     }
 
@@ -102,10 +106,29 @@ const DeliveryFrom = ({
       }
     }
 
-    const { icon, recipient, addrnum, addr1, addr2, phone1, phone2, phone3 } =
-      state;
+    const {
+      icon,
+      newSelectedIcon,
+      recipient,
+      addrnum,
+      addr1,
+      addr2,
+      phone1,
+      phone2,
+      phone3,
+    } = state;
     // 새로운 아이템을 생성하는 로직
-    onCreate(icon, recipient, addrnum, addr1, addr2, phone1, phone2, phone3);
+    onCreate(
+      icon,
+      newSelectedIcon,
+      recipient,
+      addrnum,
+      addr1,
+      addr2,
+      phone1,
+      phone2,
+      phone3
+    );
     console.log(state);
     console.log("배송지 추가하기 handleSubmit");
     setButtonCreate(false);
@@ -184,8 +207,8 @@ const DeliveryFrom = ({
                 }
               >
                 <div className="icon">
-                  {item.icon &&
-                    React.cloneElement(item.icon, { size: iconSize })}
+                  {state.selectedIcon &&
+                    React.cloneElement(state.selectedIcon, { size: iconSize })}
                 </div>
                 <div
                   ref={(el) => (inputRef.current[index + 1] = el)}

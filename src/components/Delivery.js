@@ -30,6 +30,7 @@ const Delivery = () => {
   /* 배송지 추가 */
   const onCreate = (
     icon,
+    newSelectedIcon,
     recipient,
     addrnum,
     addr1,
@@ -40,6 +41,7 @@ const Delivery = () => {
   ) => {
     const newItem = {
       icon,
+      newSelectedIcon,
       recipient,
       addrnum,
       addr1,
@@ -98,7 +100,7 @@ const Delivery = () => {
     <div className="Delivery">
       <h2>배송지 관리</h2>
       <div className="delivery-content">
-        <div>
+        <div className="button_add">
           <button
             // onChange={}
             onClick={() => {

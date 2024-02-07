@@ -30,7 +30,7 @@ const DeliveryTable = ({ deliveryList, onRemove, onEdit }) => {
   };
 
   return (
-    <div>
+    <div className="DeliveryTable">
       <table>
         <colgroup style={{ width: 200 }} />
         <colgroup style={{ width: 600 }} />
@@ -46,31 +46,38 @@ const DeliveryTable = ({ deliveryList, onRemove, onEdit }) => {
           {/** 배송지 리스트를 table로 작성 */}
           {deliveryList.map((it) => (
             <tr key={it.id}>
-              <td>{`${it.icon}`}</td>
+              <td>
+                <center>{`${it.icon} ${it.selectedIcon}`}</center>
+              </td>
               <td>{`[${it.addrnum}] ${it.addr1} ${it.addr2}`}</td>
               <td>
-                {
-                  <div>
-                    <button onClick={() => handleEditButtonClick(it.id)}>
-                      수정하기
-                    </button>
+                <center>
+                  {
+                    <div>
+                      <button
+                        onClick={() => handleEditButtonClick(it.id)}
+                        style={{ marginRight: 30 }}
+                      >
+                        수정하기
+                      </button>
 
-                    <ModalContainer
-                      isOpen={modalIsOpen}
-                      onRequestClose={() => setModalIsOpen(false)}
-                      customStyles={customStyles}
-                    >
-                      <DeliveryForm
-                        onEdit={onEdit}
-                        setModalIsOpen={setModalIsOpen}
-                        buttonEdit={buttonEdit}
-                        setButtonEdit={setButtonEdit}
-                        editingId={editingId}
-                      />
-                    </ModalContainer>
-                    <button onClick={() => onRemove(it.id)}>삭제하기</button>
-                  </div>
-                }
+                      <ModalContainer
+                        isOpen={modalIsOpen}
+                        onRequestClose={() => setModalIsOpen(false)}
+                        customStyles={customStyles}
+                      >
+                        <DeliveryForm
+                          onEdit={onEdit}
+                          setModalIsOpen={setModalIsOpen}
+                          buttonEdit={buttonEdit}
+                          setButtonEdit={setButtonEdit}
+                          editingId={editingId}
+                        />
+                      </ModalContainer>
+                      <button onClick={() => onRemove(it.id)}>삭제하기</button>
+                    </div>
+                  }
+                </center>
               </td>
             </tr>
           ))}
