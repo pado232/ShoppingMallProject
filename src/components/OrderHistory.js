@@ -9,8 +9,6 @@ import { dummyList } from "../util/dummyList";
 const OrderHistory = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-
-  // const handledate = () => {};
   const [selectedPeriod, setSelectedPeriod] = useState(null);
 
   const handleSearch = () => {
@@ -26,7 +24,7 @@ const OrderHistory = () => {
     const newStartDate = new Date(today);
     let newEndDate = new Date(today);
 
-    // 선택된 기간에 따라 종료일을 조정합니다.
+    // 선택된 기간에 따라 종료일 조정
     switch (period) {
       case "15days":
         newStartDate.setDate(today.getDate() - 15);
@@ -52,6 +50,7 @@ const OrderHistory = () => {
     // 시작일은 위에서 계산한 값으로 설정합니다.
     setStartDate(newStartDate);
   };
+
   return (
     <div className="OrderHistory">
       <h2>주문내역</h2>

@@ -28,13 +28,13 @@ const DeliveryTable = ({ deliveryList, onRemove, onEdit }) => {
     setEditingId(id); // id를 상태로 저장
     console.log(id);
   };
-
+  const iconSize = 10 * 3;
   return (
     <div className="DeliveryTable">
       <table>
-        <colgroup style={{ width: 200 }} />
-        <colgroup style={{ width: 600 }} />
-        <colgroup style={{ width: 300 }} />
+        <colgroup style={{ width: 230 }} />
+        <colgroup style={{ width: "auto" }} />
+        <colgroup style={{ width: 230 }} />
         <thead>
           <tr>
             <th>아이콘</th>
@@ -44,10 +44,61 @@ const DeliveryTable = ({ deliveryList, onRemove, onEdit }) => {
         </thead>
         <tbody>
           {/** 배송지 리스트를 table로 작성 */}
-          {deliveryList.map((it) => (
+          {deliveryList.length === 0 ? (
+            <tr>
+              <td colSpan={3} style={{ height: 300 }}>
+                <center>
+                  <strong>등록된 배송지가 없습니다.</strong>
+                </center>
+              </td>
+            </tr>
+          ) : (
+            deliveryList.map((it) => (
+              <tr key={it.id}>
+                <td>
+                  <center>
+                    <div> {it.iconcom && <it.iconcom size={iconSize} />}</div>
+                    <div style={{ fontSize: 14, color: "#aaa" }}>{it.icon}</div>
+                  </center>
+                </td>
+                <td>{`[${it.addrnum}] ${it.addr1} ${it.addr2}`}</td>
+                <td>
+                  <center>
+                    <div>
+                      <button
+                        onClick={() => handleEditButtonClick(it.id)}
+                        style={{ marginRight: 30 }}
+                      >
+                        수정하기
+                      </button>
+
+                      <ModalContainer
+                        isOpen={modalIsOpen}
+                        onRequestClose={() => setModalIsOpen(false)}
+                        customStyles={customStyles}
+                      >
+                        <DeliveryForm
+                          onEdit={onEdit}
+                          setModalIsOpen={setModalIsOpen}
+                          buttonEdit={buttonEdit}
+                          setButtonEdit={setButtonEdit}
+                          editingId={editingId}
+                        />
+                      </ModalContainer>
+                      <button onClick={() => onRemove(it.id)}>삭제하기</button>
+                    </div>
+                  </center>
+                </td>
+              </tr>
+            ))
+          )}
+          {/* {deliveryList.map((it) => (
             <tr key={it.id}>
               <td>
-                <center>{`${it.icon} ${it.selectedIcon}`}</center>
+                <center>
+                  <div> {it.iconcom && <it.iconcom size={iconSize} />}</div>
+                  <div style={{ fontSize: 14, color: "#aaa" }}>{it.icon}</div>
+                </center>
               </td>
               <td>{`[${it.addrnum}] ${it.addr1} ${it.addr2}`}</td>
               <td>
@@ -80,7 +131,7 @@ const DeliveryTable = ({ deliveryList, onRemove, onEdit }) => {
                 </center>
               </td>
             </tr>
-          ))}
+          ))} */}
         </tbody>
       </table>
     </div>

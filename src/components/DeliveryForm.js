@@ -20,18 +20,19 @@ const DeliveryFrom = ({
   editingId,
 }) => {
   const inputRef = useRef([]);
+  const [addModalIsOpen, setAddModalIsOpen] = useState(false);
   const iconSize = 10 * 3;
 
   const iconData = [
-    { value: "우리집", icon: <HiOutlineHome /> },
-    { value: "회사", icon: <LuBuilding2 /> },
-    { value: "기타", icon: <HiOutlineLocationMarker /> },
+    { value: "우리집", iconcom: HiOutlineHome },
+    { value: "회사", iconcom: LuBuilding2 },
+    { value: "기타", iconcom: HiOutlineLocationMarker },
   ];
 
   const [state, setState] = useState({
     id: editingId,
     icon: "",
-    selectedIcon: <HiOutlineHome />,
+    iconcom: null,
     recipient: "",
     addrnum: "",
     addr1: "",
@@ -72,17 +73,14 @@ const DeliveryFrom = ({
       return;
     }
 
-    if (
-      name === "icon" &&
-      (value === "우리집" || value === "회사" || value === "기타")
-    ) {
-      const selectedIcon = iconData.find((item) => item.value === value);
-
+    const selectedIcon = iconData.find((item) => item.value === value);
+    if (name === "icon" && selectedIcon) {
       setState({
         ...state,
         icon: value,
-        selectedIcon: selectedIcon ? selectedIcon.icon : null,
+        iconcom: selectedIcon.iconcom,
       });
+      return;
     }
 
     setState({
@@ -91,11 +89,17 @@ const DeliveryFrom = ({
     });
   };
 
-  /** 배송지 추가 버튼이 눌렸을 때 실행되어야할 */
+  /** 배송지 추가 버튼이 눌렸을 때 실행되어야할  */
   const handleCreate = () => {
+    // if문들은 유효성 검사
     if (state.icon === "") {
       inputRef.current[1].focus();
       alert("배송지 별칭을 선택해주세요.");
+      return;
+    }
+
+    if (state.addrnum === "") {
+      setAddModalIsOpen(true);
       return;
     }
 
@@ -105,10 +109,14 @@ const DeliveryFrom = ({
         return;
       }
     }
+    if (state.addrnum === "") {
+      setModalIsOpen(true);
+      return;
+    }
 
     const {
       icon,
-      newSelectedIcon,
+      iconcom,
       recipient,
       addrnum,
       addr1,
@@ -120,7 +128,7 @@ const DeliveryFrom = ({
     // 새로운 아이템을 생성하는 로직
     onCreate(
       icon,
-      newSelectedIcon,
+      iconcom,
       recipient,
       addrnum,
       addr1,
@@ -153,6 +161,7 @@ const DeliveryFrom = ({
     const {
       id,
       icon,
+      iconcom,
       recipient,
       addrnum,
       addr1,
@@ -166,6 +175,7 @@ const DeliveryFrom = ({
     onEdit({
       targetId: id,
       newIcon: icon,
+      newIconcom: iconcom,
       newRecipient: recipient,
       newAddrnum: addrnum,
       newAddr1: addr1,
@@ -207,8 +217,7 @@ const DeliveryFrom = ({
                 }
               >
                 <div className="icon">
-                  {state.selectedIcon &&
-                    React.cloneElement(state.selectedIcon, { size: iconSize })}
+                  {item.iconcom && <item.iconcom size={iconSize} />}
                 </div>
                 <div
                   ref={(el) => (inputRef.current[index + 1] = el)}
@@ -236,6 +245,8 @@ const DeliveryFrom = ({
           handleChangeState={handleChangeState}
           onAddressChange={handleAddressChange}
           inputRef={inputRef}
+          modalIsOpen={addModalIsOpen}
+          setModalIsOpen={setAddModalIsOpen}
         />
         <PhoneInput
           state={state}

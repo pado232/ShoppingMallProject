@@ -25,7 +25,7 @@ const PhoneInput = ({ state, handleChangeState, inputRef }) => {
         name="phone2"
         value={state.phone2}
         onChange={handleChangeState}
-        ref={(el) => (inputRef.current[7] = el)}
+        ref={(el) => (inputRef.current[5] = el)}
       />
       <span>-</span>
       <input
@@ -36,7 +36,7 @@ const PhoneInput = ({ state, handleChangeState, inputRef }) => {
         name="phone3"
         value={state.phone3}
         onChange={handleChangeState}
-        ref={(el) => (inputRef.current[8] = el)}
+        ref={(el) => (inputRef.current[6] = el)}
       />
     </div>
   );

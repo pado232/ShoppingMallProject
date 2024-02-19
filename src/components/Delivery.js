@@ -30,7 +30,7 @@ const Delivery = () => {
   /* 배송지 추가 */
   const onCreate = (
     icon,
-    newSelectedIcon,
+    iconcom,
     recipient,
     addrnum,
     addr1,
@@ -41,7 +41,7 @@ const Delivery = () => {
   ) => {
     const newItem = {
       icon,
-      newSelectedIcon,
+      iconcom,
       recipient,
       addrnum,
       addr1,
@@ -68,6 +68,7 @@ const Delivery = () => {
   const onEdit = ({
     targetId,
     newIcon,
+    newIconcom,
     newRecipient,
     newAddrnum,
     newAddr1,
@@ -81,6 +82,7 @@ const Delivery = () => {
         ? {
             ...it,
             icon: newIcon,
+            iconcom: newIconcom,
             recipient: newRecipient,
             addrnum: newAddrnum,
             addr1: newAddr1,

@@ -1,15 +1,13 @@
 import DaumPostcode from "react-daum-postcode";
-import { useState } from "react";
 import ModalContainer from "../components/ModalContainer";
 
 const AddressInput = ({
   state,
   handleChangeState,
-  inputRef,
   onAddressChange,
+  modalIsOpen,
+  setModalIsOpen,
 }) => {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-
   const handleComplete = (data) => {
     setModalIsOpen(false);
     let numAddress = data.zonecode;
@@ -59,13 +57,23 @@ const AddressInput = ({
       <div>
         <button onClick={() => setModalIsOpen(true)}>우편번호 찾기</button>
       </div>
-      <ModalContainer
+
+      {modalIsOpen && (
+        <ModalContainer
+          isOpen={modalIsOpen}
+          onRequestClose={() => setModalIsOpen(false)}
+          customStyles={customStyles}
+        >
+          <DaumPostcode onComplete={handleComplete} style={postCodeStyle} />
+        </ModalContainer>
+      )}
+      {/* <ModalContainer
         isOpen={modalIsOpen}
         onRequestClose={() => setModalIsOpen(false)}
         customStyles={customStyles}
       >
         <DaumPostcode onComplete={handleComplete} style={postCodeStyle} />
-      </ModalContainer>
+      </ModalContainer> */}
 
       <input
         className="input"
@@ -74,7 +82,6 @@ const AddressInput = ({
         name="addrnum"
         placeholder="우편번호 : 우편번호 찾기를 눌러주세요."
         onChange={handleChangeState}
-        ref={(el) => (inputRef.current[5] = el)}
         autoComplete="username"
       />
       <input
@@ -84,7 +91,6 @@ const AddressInput = ({
         readOnly
         placeholder="주소 : 우편번호 찾기를 눌러주세요."
         onChange={handleChangeState}
-        ref={(el) => (inputRef.current[6] = el)}
         autoComplete="username"
       />
       <input
