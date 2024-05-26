@@ -100,7 +100,7 @@ const Delivery = () => {
 
   return (
     <div className="Delivery">
-      <h2>배송지 관리</h2>
+      <h2 className="mypage_all_h2">배송지 관리</h2>
       <div className="delivery-content">
         <div className="button_add">
           <button

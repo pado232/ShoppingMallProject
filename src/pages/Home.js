@@ -10,8 +10,14 @@ const Home = () => {
       <div className="middle">
         <Menu />
         <div className="Home_img">
-          <img src={process.env.PUBLIC_URL + `/image/main_face.jpg`} />
-          <img src={process.env.PUBLIC_URL + `/image/powder.jpg`} />
+          <img
+            alt="메인이미지1"
+            src={process.env.PUBLIC_URL + `/image/main_face.jpg`}
+          />
+          <img
+            alt="메인이미지2"
+            src={process.env.PUBLIC_URL + `/image/powder.jpg`}
+          />
         </div>
         <HomeBestItem />
       </div>

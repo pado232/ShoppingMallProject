@@ -168,7 +168,7 @@ const SignUpContent = () => {
           autoComplete="username"
         />
         <div>
-          <button>중복 확인</button>
+          <button className="greenbutton">중복 확인</button>
         </div>
 
         <PasswordInput
@@ -271,13 +271,15 @@ const SignUpContent = () => {
         <div className="signup_title">
           <label>
             <input className="checkbox" type="checkbox" />
-            <span>Real Moment의 정보수집에 동의하시겠습니까?</span>
+            <span style={{ fontWeight: "lighter" }}>
+              Real Moment의 정보수집에 동의하시겠습니까?
+            </span>
           </label>
         </div>
 
         <MyButton
           buttonText={"회원 가입하기"}
-          handleSubmit={handleSubmit}
+          onClick={handleSubmit}
           icon={FaCheck}
         />
       </div>

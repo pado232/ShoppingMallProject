@@ -6,6 +6,48 @@
 button {
   font-family: "Gowun Dodum", sans-serif;
 }
+
+.WhiteButton button {
+  width: 120px;
+  height: 38px;
+
+  border: 1px solid #eee;
+  border-radius: 5px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+  background-color: white;
+
+  font-size: 14px;
+  font-weight: bold;
+}
+.WhiteButton button:active {
+  box-shadow: none;
+}
+.MyButton button {
+  margin-top: 30px;
+  height: 50px;
+  background-color: #161616;
+  color: white;
+
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
+
+  font-size: 14px;
+  margin-bottom: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.MyButton button:active {
+  box-shadow: none;
+}
+.MyButton span {
+  padding: 0 8px;
+}
+
 input {
   font-family: "Gowun Dodum", sans-serif;
 }
@@ -15,6 +57,9 @@ select {
 div {
   font-family: "Gowun Dodum", sans-serif;
 }
+textarea {
+  font-family: "Gowun Dodum", sans-serif;
+}
 /* table 전체 설정 */
 table {
   width: 100%;
@@ -22,10 +67,16 @@ table {
 }
 table thead tr {
   border-bottom: 1px solid black;
-  border-top: 1px solid black;
+  border-top: 3px solid black;
 }
 table thead th {
   padding: 15px 0;
+}
+
+.mypage_all_h2 {
+  margin-left: 40px;
+  margin-top: 50px;
+  letter-spacing: 2px;
 }
 
 /* HEADER */
@@ -37,7 +88,8 @@ table thead th {
 
   z-index: 10;
 
-  padding: 0 100px 0 40px;
+  height: 125px;
+  padding: 0 30px 0 40px;
   display: flex;
   align-items: center;
   border-bottom: 1px solid black;
@@ -53,13 +105,15 @@ table thead th {
   justify-content: start;
 }
 .head_search {
-  width: 80%;
-  justify-content: end;
+  margin-top: 20px;
+  width: 60%;
+  justify-content: center;
 }
 .head_search_box {
   padding-left: 15px;
   padding-right: 15px;
   padding-top: 2px;
+  /* padding-bottom: 5px; */
   width: 60%;
   border-radius: 20px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
@@ -72,7 +126,7 @@ table thead th {
 .head_search_box input {
   margin-left: 10px;
   border: none;
-  font-size: 18px;
+  font-size: 16px;
   width: 100%;
   font-family: "Gowun Dodum", sans-serif;
 }
@@ -86,6 +140,28 @@ table thead th {
   border: none;
   background-color: white;
   cursor: pointer;
+}
+.head_menu {
+  width: 20%;
+  justify-content: end;
+}
+.head_menu ul {
+  display: flex;
+  margin: 30px 0;
+}
+.head_menu li {
+  width: 70px;
+  list-style-type: none;
+  padding: 5px 0;
+  text-align: center;
+}
+.head_menu a {
+  display: grid;
+  place-items: center;
+
+  font-size: 14px;
+  text-decoration: none;
+  color: black;
 }
 
 /* Home_Middle*/
@@ -118,11 +194,13 @@ table thead th {
 
 /* Home */
 .Home_img {
-  transform: translate(400px, 124px);
-
+  margin-top: 125px;
+  margin-left: 200px;
+  margin-right: 200px;
   display: flex;
 }
 .middle .Home_img img {
+  width: 100%;
   height: 1000px;
 }
 
@@ -155,45 +233,79 @@ table thead th {
 } */
 .Menu {
   position: fixed;
-  top: 124px;
+  top: 126px;
   left: 0;
-  right: 400px;
 
-  z-index: 9;
-
+  float: inline-start;
+  z-index: 10;
   /* animation: menu-ani 1.3s ease forwards; */
-
-  float: left;
-  width: 400px;
-  height: 2000px;
-
-  background-color: white;
+  width: 100%;
+}
+.Menu .containor {
+  border-bottom: 1px solid black;
+  background-color: #fff;
+  padding: 10px;
+}
+.Menu ul {
+  margin: 0;
 }
 .Menu ul li {
-  padding-top: 10px;
+  margin: 0 50px;
   list-style-type: none;
 }
 .Menu ul li a {
   text-decoration-line: none;
   color: black;
 }
-.Menu span {
-  padding-left: 5px;
+
+.Menu li button {
+  font-size: 22px;
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  cursor: pointer;
 }
+.Menu li button.click {
+}
+
 .Menu .menu_main {
-  width: 250px;
-  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
 }
-.Menu .menu_sub {
-  font-size: 30px;
-  padding-top: 15px;
+
+/* MenuList */
+.MenuList {
+  background-color: rgba(255, 255, 255, 0.6);
+}
+.MenuList nav {
+  padding: 20px;
+}
+.MenuList nav ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+.MenuList nav ul li.title {
+  font-weight: bold;
+}
+.MenuList nav ul li {
+  margin: 5px 0;
+  list-style-type: none;
+  width: 100px;
 }
 
 /* FOOTER */
+.MyFooter {
+  position: relative;
+  height: 0px;
+  width: 100%;
+}
 footer {
-  position: absolute;
-  top: 2500px;
-  left: 400px;
+  /* position: absolute;
+  top: auto;
+  left: 0; */
 
   width: 100%;
   padding: 20px 0;
@@ -217,29 +329,23 @@ footer .foot_4 select {
 /* ITEM */
 .Item {
 }
+/* .Item .itemlist {
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 1360px;
+  margin-bottom: 300px;
+} */
 
 /* ITEMLIST */
+
 .ItemList {
-  position: absolute;
-  top: 140px;
-  left: 400px;
-
-  height: 2000px;
-}
-
-.ItemList .item_dummy {
-  padding-right: 50px;
-}
-.ItemList .ControlMenu {
-  justify-content: end;
 }
 
 /* ItemItem */
 .ItemItem {
   float: left;
-  margin-right: 30px;
-  margin-bottom: 40px;
-  margin-left: 10px;
+  margin: 30px 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 
   cursor: pointer;
@@ -297,10 +403,7 @@ footer .foot_4 select {
 /* ControlMenu */
 .ControlMenu {
   display: flex;
-  justify-content: end;
-  margin-right: 200px;
-  margin-bottom: 20px;
-  margin-top: 20px;
+  justify-content: flex-end;
 }
 .ControlMenu select {
   font-size: 14px;
@@ -312,7 +415,8 @@ footer .foot_4 select {
 
 /* LoginHeader */
 .LoginHeader {
-  padding: 20px 50px;
+  height: 125px;
+  padding: 0 50px;
   display: flex;
   align-items: center;
 
@@ -357,7 +461,7 @@ footer .foot_4 select {
   padding: 10px 20px;
 
   display: flex;
-  justify-content: start;
+  justify-content: flex-start; /*start*/
   align-items: center;
 }
 .login_box input {
@@ -436,9 +540,6 @@ footer .foot_4 select {
   margin-bottom: 10px;
   font-weight: bold;
 }
-.signup_title label span {
-  font-weight: lighter;
-}
 .input {
   width: 90%;
   padding: 8px;
@@ -455,7 +556,7 @@ footer .foot_4 select {
   font-weight: bold;
   margin-bottom: 5px;
 }
-.signup_content button {
+.signup_content .greenbutton {
   background-color: rgb(114, 184, 108);
   color: rgb(253, 255, 233);
 
@@ -468,48 +569,39 @@ footer .foot_4 select {
   font-size: 14px;
   margin-bottom: 10px;
 }
-.signup_content .final_btn {
-  margin-top: 30px;
-  background-color: #161616;
-  color: white;
-  width: 100%;
-  padding: 15px 0;
-  font-size: 16px;
-  cursor: pointer;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.signup_content button:active {
+.signup_content .greenbutton:active {
   box-shadow: none;
-}
-.signup_content .icon {
-  margin-left: 10px;
-}
-.signup_content select {
-  padding: 7px;
 }
 .signup_content span {
   padding: 0 8px;
+}
+.signup_content select {
+  padding: 7px;
 }
 .signup_content label {
   padding-right: 30px;
 }
 /* MyPage */
-.mypage_content {
-  position: absolute;
-  top: 150px;
-  left: 400px;
+.Mypage {
 }
+/* .mypage_content {
+  position: relative;
+  top: 220px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 1300px;
+  margin-bottom: 300px;
+} */
 .mypage_menu ul {
   display: flex;
   margin-bottom: 0;
   padding: 0;
 }
 .mypage_menu li {
-  width: 210px;
+  width: 215px;
   height: 40px;
+
+  letter-spacing: 1px;
 
   list-style-type: none;
   border: 1px solid #ccc;
@@ -522,6 +614,7 @@ footer .foot_4 select {
   background-color: #eee;
   cursor: pointer;
 }
+
 .mypage_menu li.click {
   background-color: white;
   font-weight: bold;
@@ -550,7 +643,7 @@ footer .foot_4 select {
   padding: 30px;
 
   display: flex;
-  justify-content: start;
+  justify-content: flex-start; /*start*/
   align-items: center;
 }
 .usergrade_title img {
@@ -604,40 +697,37 @@ footer .foot_4 select {
   font-size: 25px;
 }
 
-/* Order History */
+/* 주문내역 */
+/* OrderHistory */
 .OrderHistory {
-  margin: 50px auto;
+  margin: 0 auto;
 }
-.OrderHistory h2 {
-  margin-left: 40px;
-}
-.lookup_box {
+
+.OrderHistory .lookup_box {
   width: 100%;
   border: 1px solid #161616;
   border-radius: 10px;
 }
-.lookup_box .box {
+
+/* DatePickerSelector */
+.DatePickerSelector {
+}
+.DatePickerSelector .content {
   width: 100%;
   height: 80px;
 
   border-bottom: 1px solid #161616;
 
   display: flex;
-  justify-content: start;
+  justify-content: flex-start; /*start*/
   align-items: center;
 }
-.lookup_box .box .box_title {
+.DatePickerSelector .content .title {
   font-weight: bold;
   padding: 120px;
   text-align: center;
 }
-.lookup_box label {
-  padding-right: 40px;
-}
-.lookup_box label input {
-  margin-right: 10px;
-}
-.lookup_box .search {
+.DatePickerSelector .search {
   margin-left: 30px;
   padding: 5px 20px;
 
@@ -647,39 +737,66 @@ footer .foot_4 select {
   border: none;
   border-radius: 8px;
 
-  font-size: 17px;
+  font-size: 15px;
   cursor: pointer;
 }
-.lookup_box button:active {
+.DatePickerSelector button:active {
   box-shadow: none;
 }
 
-/* 주문 내역 */
-.orderhistory_list {
-  margin: 50px auto;
+/* PeriodSelector */
+.PeriodSelector {
 }
-.orderhistory_list table thead {
-}
-.orderhistory_list .iteminfo {
-  margin: 5px;
+.PeriodSelector .content {
+  width: 100%;
+  height: 80px;
+
+  border-bottom: 1px solid #161616;
+
   display: flex;
-  justify-content: start;
+  justify-content: flex-start; /*start*/
   align-items: center;
 }
-.orderhistory_list .iteminfo ul {
+.PeriodSelector .content .title {
+  font-weight: bold;
+  padding: 120px;
+  text-align: center;
+}
+.PeriodSelector label {
+  padding-right: 40px;
+}
+.PeriodSelector label input {
+  margin-right: 10px;
+}
+
+/* ListTable */
+.ListTable {
+  margin: 50px auto;
+}
+.ListTable table thead {
+}
+.ListTable .iteminfo {
+  margin-top: 5px;
+  display: flex;
+  justify-content: flex-start; /* start */
+  align-items: center;
+}
+.ListTable .iteminfo ul {
   margin: 0;
   padding-left: 20px;
 }
-.orderhistory_list .iteminfo ul li {
+.ListTable .iteminfo ul li {
   margin: 0;
   list-style-type: none;
 }
-.orderhistory_list table tbody tr {
+.ListTable table tbody tr {
   border-bottom: 1px solid #eee;
 }
 
+/* 배송지 관리 */
 /* Delivery */
 .Delivery {
+  margin: 0 auto;
 }
 .Delivery .signup_content {
   margin: 50px;
@@ -734,20 +851,11 @@ footer .foot_4 select {
 .Delivery_icon p {
   text-align: center;
 }
-
 .DeliveryFrom .signup_content {
   margin: 0;
   padding: 0 0 0 40px;
   border: none;
   box-shadow: none;
-}
-
-/* 배송지 관리 */
-.Delivery {
-  margin: 50px auto;
-}
-.Delivery h2 {
-  margin-left: 40px;
 }
 .Delivery .button_add button {
   margin-left: 565px;
@@ -769,58 +877,26 @@ footer .foot_4 select {
   padding: 10px 0;
   border-bottom: 1px solid #eee;
 }
-.DeliveryTable button {
-  padding: 3px 13px;
-
-  border: 1px solid #eee;
-  border-radius: 5px;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
-  background-color: white;
-
-  font-size: 14px;
-}
-.DeliveryTable button:active {
-  box-shadow: none;
-}
 
 /* 회원정보 수정 */
 .EditInfo {
-  margin: 50px auto;
+  margin: 0 auto;
 }
-.EditInfo h2 {
-  margin-left: 40px;
-}
+
 .EditInfo .line {
-  border-bottom: 2px solid black;
+  border-bottom: 3px solid black;
   margin-bottom: 20px;
 }
 .editinfo_content {
 }
 .editinfo_content table th {
   padding: 30px 0;
-
   text-align: start;
 }
 .editinfo_content table td {
 }
 .editinfo_content table tbody tr {
   border-bottom: 1px solid #eee;
-}
-.editinfo_content button {
-  width: 120px;
-  height: 38px;
-
-  border: 1px solid #eee;
-  border-radius: 5px;
-  background-color: white;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
-
-  font-weight: bold;
-  font-size: 14px;
-  cursor: pointer;
-}
-.editinfo_content button:active {
-  box-shadow: none;
 }
 .editinfo_content p {
   font-size: 13px;
@@ -836,17 +912,9 @@ footer .foot_4 select {
   font-weight: lighter;
 }
 .EditPassword button {
-  font-weight: lighter;
+  margin-left: 40px;
   width: 80px;
   height: 35px;
-  margin-left: 17px;
-  margin-top: 10px;
-  margin-bottom: 30px;
-  margin-right: 30px;
-  background-color: #161616;
-  color: white;
-  border: none;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
 }
 
 /* EditeMail */
@@ -857,7 +925,7 @@ footer .foot_4 select {
   margin-top: 30px;
   margin-bottom: 10px;
   display: flex;
-  justify-content: start;
+  justify-content: flex-start; /*start*/
   align-items: center;
 }
 .EditeMail .box input {
@@ -868,22 +936,241 @@ footer .foot_4 select {
   border-radius: 4px;
   font-size: 14px;
 }
-.EditeMail .btn {
-  font-weight: lighter;
+.EditInfo .button_warpper {
+  display: flex;
+  margin-bottom: 30px;
+}
+.EditeMail button {
+  margin-left: 40px;
   width: 80px;
   height: 35px;
-  margin-left: 17px;
-  margin-top: 15px;
-  margin-bottom: 30px;
-  margin-right: 30px;
-  background-color: #161616;
-  color: white;
-  border: none;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
 }
-.EditeMail .ck_btn {
-  background-color: #f7f7f7;
-  width: 80px;
+
+/* 적립금 */
+.Point {
+  margin: 0 auto;
+  font-weight: lighter;
+}
+.Point .lookup_box {
+  width: 100%;
+  border: 1px solid #161616;
+  border-radius: 10px;
+}
+.Point table tbody tr {
+  border-bottom: 1px solid #eee;
+}
+.Point ul li {
+  margin: 0;
+  list-style-type: none;
+}
+.Point .iteminfo {
+  margin-top: 5px;
+  display: flex;
+  justify-content: flex-start; /*start*/
+  align-items: center;
+}
+.pointtable {
+  margin: 50px auto;
+}
+
+/* Review */
+.Review .review_menu ul {
+  margin: 0;
+  padding: 0;
+
+  background-color: #ececec;
+  letter-spacing: 2px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Review .review_menu ul li {
+  width: 100%;
+  padding: 10px;
+  border-bottom: none;
+  list-style-type: none;
+  border-top: 5px solid #ececec;
+  text-align: center;
+  font-size: 17px;
+  cursor: pointer;
+}
+.Review .review_menu ul li.clicked {
+  border: 1px solid #999999;
+  border-top: 5px solid #999999;
+  background-color: white;
+  border-bottom: none;
+  font-weight: bold;
+}
+
+.ReviewWrite {
+}
+.ReviewWrite h2 {
+  text-align: center;
+  margin: 50px;
+}
+.ReviewWrite .iteminfo {
+  margin-top: 5px;
+  display: flex;
+  justify-content: flex-start; /*start*/
+  align-items: center;
+}
+.ReviewWrite ul li {
+  margin: 0;
+  list-style-type: none;
+}
+.ReviewWrite table tbody tr {
+  border-bottom: 1px solid #eee;
+}
+
+.ReviewMine {
+}
+.ReviewMine h2 {
+  text-align: center;
+  margin: 50px;
+}
+.ReviewMine .iteminfo {
+  margin-top: 5px;
+  display: flex;
+  justify-content: flex-start; /*start*/
+  align-items: center;
+}
+.ReviewMine ul li {
+  margin: 0;
+  list-style-type: none;
+}
+.ReviewMine table tbody tr {
+  border-bottom: 1px solid #eee;
+}
+.ReviewMine .button_warpper {
+  display: flex;
+  justify-content: center;
+}
+
+/* ReviewWrite */
+.ReviewWrite {
+}
+.ReviewWriteBox .item_warpper {
+  padding: 5px 0;
+  border-top: 3px solid #161616;
+  border-bottom: 1px solid #161616;
+
+  margin-bottom: 20px;
+
+  display: flex;
+  justify-content: flex-start; /*start*/
+  align-items: center;
+}
+.ReviewWriteBox .item_warpper .item_name {
+  padding-left: 30px;
+}
+.ReviewWriteBox h2 {
   margin-left: 20px;
-  margin-top: 8px;
+}
+
+.ReviewWriteBox .stars_warpper {
+  padding: 10px 0;
+  text-align: center;
+  border-bottom: 1px dashed #ccc;
+}
+.ReviewWriteBox .stars_warpper .stars {
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ReviewWriteBox .stars_warpper .stars div {
+  padding: 0 3px;
+}
+.ReviewWriteBox .content_warpper {
+  padding: 20px 0;
+  text-align: center;
+}
+.ReviewWriteBox textarea {
+  width: 100%;
+  height: 200px;
+  padding: 10px;
+  margin-top: 10px;
+
+  border: 1px solid #dbdbdb;
+  resize: none; /* 크기 조절*/
+  border-radius: 5px;
+  font-size: 15px;
+}
+.ReviewWriteBox textarea:focus {
+  border: 1px solid #ff8a8a;
+  outline: none;
+}
+.ReviewWriteBox .button_warpper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+.ReviewWriteBox button {
+  margin-top: 0;
+  font-size: 14px;
+  width: 120px;
+  height: 38px;
+}
+.ReviewWriteBox button:active {
+  box-shadow: none;
+}
+
+.ReviewLookBox {
+}
+.ReviewLookBox .item_warpper {
+  padding: 5px 0;
+  border-top: 3px solid #161616;
+  border-bottom: 1px solid #161616;
+
+  margin-bottom: 20px;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.ReviewLookBox .item_warpper .item_name {
+  padding-left: 30px;
+  height: 60px;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+.ReviewLookBox .stars {
+  margin-top: 30px;
+  margin-right: 10px;
+  text-align: end;
+}
+
+/* New */
+.New {
+}
+.New .new_content {
+  position: relative;
+  top: 220px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 1300px;
+  margin-bottom: 300px;
+}
+
+/* .Container {
+  position: relative;
+  top: 220px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 1360px;
+  margin-bottom: 300px;
+} */
+/* .Item .itemlist {
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 1360px;
+  margin-bottom: 300px;
+} */
+
+.Detail {
+}
+.Detail .detail_content {
 }

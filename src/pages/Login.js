@@ -23,50 +23,54 @@ const Login = () => {
 
   const iconSize = 9 * 2;
   const pwIconSize = 7 * 3;
+
+  const handleSubmit = () => {};
   return (
     <div className="Login">
-      <LoginHeader titleText={"로그인"} />
-      <div className="login_content">
-        <IdBox
-          icon={FaRegUser}
-          iconSize={iconSize}
-          inputType={"text"}
-          inputPlaceholder={"아이디"}
-        />
-
-        <div className="login_box">
-          <HiOutlineLockClosed size={pwIconSize} />
-          <input
-            className="pw_input"
-            type="passward"
-            placeholder="비밀번호"
-            maxLength="20"
-            value={pw}
-            onChange={handlePw}
+      <form>
+        <LoginHeader titleText={"로그인"} />
+        <div className="login_content">
+          <IdBox
+            icon={FaRegUser}
+            iconSize={iconSize}
+            inputType={"text"}
+            inputPlaceholder={"아이디"}
           />
-        </div>
-        {!pwValid && pw.length > 0 && (
-          <div className="pw_error" style={{ padding: 5 }}>
-            영문, 숫자, 특수문자 포함 8자 이상 입력해주세요.
+
+          <div className="login_box">
+            <HiOutlineLockClosed size={pwIconSize} />
+            <input
+              className="pw_input"
+              type="password"
+              placeholder="비밀번호"
+              maxLength="20"
+              value={pw}
+              onChange={handlePw}
+            />
           </div>
-        )}
+          {!pwValid && pw.length > 0 && (
+            <div className="pw_error" style={{ padding: 5 }}>
+              영문, 숫자, 특수문자 포함 8자 이상 입력해주세요.
+            </div>
+          )}
 
-        <MyButton buttonText={"로그인"} />
+          <MyButton buttonText={"로그인"} onClick={handleSubmit} />
 
-        <div className="login_search">
-          <a className="login_search_id" href={"/findid"}>
-            아이디 찾기
-          </a>
-          <span>|</span>
-          <a className="login_search_pw" href={"/findpw"}>
-            비밀번호 찾기
-          </a>
-          <span>|</span>
-          <a className="login_search_sign_up" href={"/signup"}>
-            회원가입
-          </a>
+          <div className="login_search">
+            <a className="login_search_id" href={"/findid"}>
+              아이디 찾기
+            </a>
+            <span>|</span>
+            <a className="login_search_pw" href={"/findpw"}>
+              비밀번호 찾기
+            </a>
+            <span>|</span>
+            <a className="login_search_sign_up" href={"/signup"}>
+              회원가입
+            </a>
+          </div>
         </div>
-      </div>
+      </form>
     </div>
   );
 };

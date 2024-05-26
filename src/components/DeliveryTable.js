@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import ModalContainer from "./ModalContainer";
 import DeliveryForm from "./DeliveryForm";
+import WhiteButton from "../util/whiteButton";
 
 const DeliveryTable = ({ deliveryList, onRemove, onEdit }) => {
   const customStyles = {
@@ -28,7 +29,9 @@ const DeliveryTable = ({ deliveryList, onRemove, onEdit }) => {
     setEditingId(id); // id를 상태로 저장
     console.log(id);
   };
+
   const iconSize = 10 * 3;
+
   return (
     <div className="DeliveryTable">
       <table>
@@ -65,12 +68,11 @@ const DeliveryTable = ({ deliveryList, onRemove, onEdit }) => {
                 <td>
                   <center>
                     <div>
-                      <button
+                      <WhiteButton
+                        style={{ marginBottom: 10 }}
                         onClick={() => handleEditButtonClick(it.id)}
-                        style={{ marginRight: 30 }}
-                      >
-                        수정하기
-                      </button>
+                        buttonText={"수정하기"}
+                      />
 
                       <ModalContainer
                         isOpen={modalIsOpen}
@@ -85,53 +87,17 @@ const DeliveryTable = ({ deliveryList, onRemove, onEdit }) => {
                           editingId={editingId}
                         />
                       </ModalContainer>
-                      <button onClick={() => onRemove(it.id)}>삭제하기</button>
+
+                      <WhiteButton
+                        onClick={() => onRemove(it.id)}
+                        buttonText={"삭제하기"}
+                      />
                     </div>
                   </center>
                 </td>
               </tr>
             ))
           )}
-          {/* {deliveryList.map((it) => (
-            <tr key={it.id}>
-              <td>
-                <center>
-                  <div> {it.iconcom && <it.iconcom size={iconSize} />}</div>
-                  <div style={{ fontSize: 14, color: "#aaa" }}>{it.icon}</div>
-                </center>
-              </td>
-              <td>{`[${it.addrnum}] ${it.addr1} ${it.addr2}`}</td>
-              <td>
-                <center>
-                  {
-                    <div>
-                      <button
-                        onClick={() => handleEditButtonClick(it.id)}
-                        style={{ marginRight: 30 }}
-                      >
-                        수정하기
-                      </button>
-
-                      <ModalContainer
-                        isOpen={modalIsOpen}
-                        onRequestClose={() => setModalIsOpen(false)}
-                        customStyles={customStyles}
-                      >
-                        <DeliveryForm
-                          onEdit={onEdit}
-                          setModalIsOpen={setModalIsOpen}
-                          buttonEdit={buttonEdit}
-                          setButtonEdit={setButtonEdit}
-                          editingId={editingId}
-                        />
-                      </ModalContainer>
-                      <button onClick={() => onRemove(it.id)}>삭제하기</button>
-                    </div>
-                  }
-                </center>
-              </td>
-            </tr>
-          ))} */}
         </tbody>
       </table>
     </div>

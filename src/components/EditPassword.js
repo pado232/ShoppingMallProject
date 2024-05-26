@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import PasswordInput from "../util/PasswordInput";
+import MyButton from "./MyButton";
 
 const EditPassword = ({ onCancel, onConfirm }) => {
   const inputRef = useRef([]);
@@ -64,8 +65,14 @@ const EditPassword = ({ onCancel, onConfirm }) => {
         )}
       </div>
 
-      <button onClick={onCancel}>취소</button>
-      <button onClick={handleSubmit}>완료</button>
+      <div className="button_warpper">
+        <MyButton
+          style={{ marginLeft: 20 }}
+          buttonText={"취소"}
+          onClick={onCancel}
+        />
+        <MyButton buttonText={"완료"} onClick={handleSubmit} />
+      </div>
     </div>
   );
 };

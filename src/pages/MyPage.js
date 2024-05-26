@@ -8,8 +8,11 @@ import UserGrade from "../components/UserGrade";
 import Delivery from "../components/Delivery";
 import Review from "../components/Review";
 import EditInfo from "../components/EditInfo";
-import Inquiry from "../components/Inquiry";
 import Point from "../components/Point";
+import ReviewWrite from "../components/ReviewWrite";
+import ReviewMine from "../components/ReviewMine";
+import Inquriy from "../components/Inquiry";
+import Container from "../components/Container";
 
 const myPageMenu = [
   { bar_name: "주문내역", bar_value: "OrderHistory" },
@@ -37,38 +40,53 @@ const MyPage = () => {
     <div className="MyPage">
       <MyHeader />
       <Menu />
-      <div className="mypage_content">
-        <div className="mypage_menu">
-          <ul>
-            {myPageMenu.map((it) => (
-              <li
-                className={it.bar_value === listState ? "click" : ""}
-                key={it.bar_value}
-                {...it}
-                onClick={() => setListState(it.bar_value)}
-              >
-                {it.bar_name}
-              </li>
-            ))}
-          </ul>
+      <Container>
+        <div className="mypage_content">
+          <div className="mypage_menu">
+            <ul>
+              {myPageMenu.map((it) => (
+                <li
+                  className={it.bar_value === listState ? "click" : ""}
+                  key={it.bar_value}
+                  {...it}
+                  onClick={() => setListState(it.bar_value)}
+                >
+                  {it.bar_name}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <UserGrade />
+          {listState === "OrderHistory" ? (
+            <OrderHistory />
+          ) : listState === "delivery" ? (
+            <Delivery />
+          ) : listState === "review" ? (
+            <Review
+              h2Text={"리뷰"}
+              barText1={"리뷰 작성"}
+              barText2={"나의 리뷰"}
+              WriteComponent={ReviewWrite}
+              MyComponent={ReviewMine}
+            />
+          ) : listState === "point" ? (
+            <Point />
+          ) : listState === "inquiry" ? (
+            <Review
+              h2Text={"1:1 문의"}
+              barText1={"문의하기"}
+              barText2={"나의 문의"}
+              WriteComponent={Inquriy}
+              MyComponent={ReviewMine}
+            />
+          ) : listState === "editInfo" ? (
+            <EditInfo goToDelivery={goToDelivery} />
+          ) : (
+            ""
+          )}
         </div>
-        <UserGrade />
-        {listState === "OrderHistory" ? (
-          <OrderHistory />
-        ) : listState === "delivery" ? (
-          <Delivery />
-        ) : listState === "review" ? (
-          <Review />
-        ) : listState === "point" ? (
-          <Point />
-        ) : listState === "inquiry" ? (
-          <Inquiry />
-        ) : listState === "editInfo" ? (
-          <EditInfo goToDelivery={goToDelivery} />
-        ) : (
-          ""
-        )}
-      </div>
+      </Container>
+
       <MyFooter />
     </div>
   );

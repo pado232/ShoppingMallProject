@@ -3,14 +3,16 @@ import { FaHeart } from "react-icons/fa";
 import { useState } from "react";
 import { TiShoppingCart } from "react-icons/ti";
 import { MdPayment } from "react-icons/md";
+import { useCategory } from "../components/CategoryProvider";
+
 const ItemItem = ({ item_id, item_img, item_name, item_price, item_sale }) => {
+  const { selectedCategory } = useCategory();
   const Round = (item_price * (100 - item_sale)) / 100;
 
   const [heart, setHeart] = useState(false);
   const iconSize = 10 * 2;
   const iconCartSize = 12 * 2;
-  // const emptyHeart = <FaRegHeart />;
-  // const fullHeart = <FaHeart />;
+
   const haertIcon = heart ? (
     <FaHeart size={iconSize} />
   ) : (
@@ -21,9 +23,9 @@ const ItemItem = ({ item_id, item_img, item_name, item_price, item_sale }) => {
   };
   return (
     <div className="ItemItem">
-      <a href={"/"}>
+      <a href={`/item/${selectedCategory}/detail/${item_id}`}>
         <div className="box_img">
-          <img src={item_img} />
+          <img alt="상품이미지" src={item_img} />
         </div>
         <div className="box_content">
           <div className="name">{item_name}</div>

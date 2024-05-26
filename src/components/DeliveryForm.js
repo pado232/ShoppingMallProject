@@ -253,7 +253,7 @@ const DeliveryFrom = ({
           handleChangeState={handleChangeState}
           inputRef={inputRef}
         />
-        <MyButton buttonText={"배송지 등록하기"} handleSubmit={handleSubmit} />
+        <MyButton buttonText={"배송지 등록하기"} onClick={handleSubmit} />
       </div>
     </div>
   );

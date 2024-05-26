@@ -55,7 +55,9 @@ const AddressInput = ({
     <div className="AddressInput">
       <div className="signup_title">주소</div>
       <div>
-        <button onClick={() => setModalIsOpen(true)}>우편번호 찾기</button>
+        <button className="greenbutton" onClick={() => setModalIsOpen(true)}>
+          우편번호 찾기
+        </button>
       </div>
 
       {modalIsOpen && (

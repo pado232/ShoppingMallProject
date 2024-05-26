@@ -1,39 +1,39 @@
+import { useState } from "react";
 import { FaInstagram } from "react-icons/fa6";
+import MenuList from "./MenuList";
 
 const Menu = () => {
-  const iconSize = 10 * 3;
+  const iconSize = 9 * 2;
+  const [menuClick, setMenuClick] = useState(false);
+  const menuToggle = () => {
+    setMenuClick(!menuClick);
+  };
   return (
     <div className="Menu">
-      <ul>
-        <div className="menu_main">
-          <li>
-            <a href={"/item"}>Category</a>
-          </li>
-          <li>
-            <a href={"/new"}>New</a>
-          </li>
-          <li>
-            <a href={"/item"}>Sale</a>
-          </li>
-          <li>
-            <a href={"https://www.instagram.com/"}>
-              <FaInstagram size={iconSize} />
-              <span>RealMoment</span>
-            </a>
-          </li>
-        </div>
-        <div className="menu_sub">
-          <li>
-            <a href={"/mypage"}>My_page</a>
-          </li>
-          <li>
-            <a href={"/item"}>Cart</a>
-          </li>
-          <li>
-            <a href={"/login"}>Login</a>
-          </li>
-        </div>
-      </ul>
+      <div className="containor">
+        <ul>
+          <div className="menu_main">
+            <li>
+              <button className={menuClick ? "click" : ""} onClick={menuToggle}>
+                Category
+              </button>
+            </li>
+            <li>
+              <a href={"/new"}>New</a>
+            </li>
+            <li>
+              <a href={"/item"}>Sale</a>
+            </li>
+            <li>
+              <a href={"https://www.instagram.com/"}>
+                <FaInstagram size={iconSize} />
+                <span>RealMoment</span>
+              </a>
+            </li>
+          </div>
+        </ul>
+      </div>
+      {menuClick ? <MenuList /> : ""}
     </div>
   );
 };

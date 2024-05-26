@@ -1,6 +1,7 @@
 import { useState } from "react";
 import EditPassword from "./EditPassword";
 import EditEmail from "./EditEmail";
+import WhiteButton from "../util/whiteButton";
 
 const infoDummy = [
   {
@@ -113,7 +114,7 @@ const EditInfo = ({ goToDelivery }) => {
   };
   return (
     <div className="EditInfo">
-      <h2>개인정보 수정</h2>
+      <h2 className="mypage_all_h2">개인정보 수정</h2>
       <div className="line"></div>
       <div className="editinfo_content">
         <table>
@@ -142,7 +143,10 @@ const EditInfo = ({ goToDelivery }) => {
               </td>
               <td>
                 {!editingPassword && (
-                  <button onClick={handleEditPassword}>비밀번호 변경</button>
+                  <WhiteButton
+                    buttonText={"비밀번호 변경"}
+                    onClick={handleEditPassword}
+                  />
                 )}
               </td>
             </tr>
@@ -160,7 +164,10 @@ const EditInfo = ({ goToDelivery }) => {
               </td>
               <td>
                 {!editingEmail && (
-                  <button onClick={handleEditEmail}>이메일 변경</button>
+                  <WhiteButton
+                    buttonText={"이메일 변경"}
+                    onClick={handleEditEmail}
+                  />
                 )}
               </td>
             </tr>
@@ -189,7 +196,10 @@ const EditInfo = ({ goToDelivery }) => {
               <th>배송지</th>
               <td>{}</td>
               <td>
-                <button onClick={goToDelivery}>배송지 변경</button>
+                <WhiteButton
+                  buttonText={"배송지 변경"}
+                  onClick={goToDelivery}
+                />
               </td>
             </tr>
           </tbody>

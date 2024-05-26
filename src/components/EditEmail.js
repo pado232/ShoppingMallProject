@@ -1,5 +1,7 @@
 import { useState, useRef } from "react";
 import EmailInput from "../util/EmailInput";
+import MyButton from "./MyButton";
+import WhiteButton from "../util/whiteButton";
 
 const EditEmail = ({ onCancel }) => {
   const inputRef = useRef([]);
@@ -53,9 +55,11 @@ const EditEmail = ({ onCancel }) => {
           index={0}
           inputRef={inputRef}
         />
-        <button className="ck_btn" onClick={certificationSubmit}>
-          인증
-        </button>
+        <WhiteButton
+          style={{ marginTop: 9, marginLeft: 20 }}
+          buttonText={"인증"}
+          onClick={certificationSubmit}
+        />
       </div>
 
       <div className="box">
@@ -68,12 +72,14 @@ const EditEmail = ({ onCancel }) => {
           disabled={!certificationEnabled}
         />
       </div>
-      <button className="btn" onClick={onCancel}>
-        취소
-      </button>
-      <button className="btn" onClick={handleSubmit}>
-        완료
-      </button>
+      <div className="button_warpper">
+        <MyButton
+          style={{ marginLeft: 20 }}
+          buttonText={"취소"}
+          onClick={onCancel}
+        />
+        <MyButton buttonText={"완료"} onClick={handleSubmit} />
+      </div>
     </div>
   );
 };
